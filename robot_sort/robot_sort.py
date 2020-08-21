@@ -118,6 +118,9 @@ class SortingRobot:
         self.swap_item()
         self.move_right()
         
+        # I can't figure out how to do this without a for loop
+        # And I can't use a for loop without using len(self._list)
+        # So I fail.
         while self.right() == True or self.left() == True:
             self.right()
             self.left()
