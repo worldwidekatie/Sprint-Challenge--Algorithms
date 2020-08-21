@@ -92,12 +92,35 @@ class SortingRobot:
         """
         return self._light == "ON"
 
+    def right(self):
+        while self.can_move_right() == True:
+            self.move_right()
+            if self.compare_item() == -1:
+                self.swap_item()
+                return True
+
+        return False
+    
+    def left(self):
+        while self.can_move_left() == True:
+            self.move_left()
+            if self.compare_item() == -1:
+                self.swap_item()
+                return True
+
+        return False
     def sort(self):
         """
         Sort the robot's list.
         """
-        # Fill this out
-        pass
+        # First, I need to make self._item not be None
+        # So the robot can compare and move over to a not none
+        self.swap_item()
+        self.move_right()
+        
+        while self.right() == True or self.left() == True:
+            self.right()
+            self.left()
 
 
 if __name__ == "__main__":
@@ -110,3 +133,30 @@ if __name__ == "__main__":
 
     robot.sort()
     print(robot._list)
+
+
+
+    """UNDERSTAND"""
+    # BACKGROUND
+#     You have been given a robot with very basic capabilities:
+
+#   * It can move left or right.
+#   * It can pick up an item
+#     * If it tries to pick up an item while already holding one, 
+#       it will swap the items instead.
+#   * It can compare the item it's holding to the item in front of it.
+#   * It can switch a light on its head on or off.
+
+# Your task is to program this robot to sort lists using ONLY these abilities.
+
+# ##### Rules
+
+#   * You may use any pre-defined robot methods.
+#   * You may NOT modify any pre-defined robot methods.
+#   * You may use logical operators. (`if`, `and`, `or`, `not`, etc.)
+#   * You may use comparison operators. (`>`, `>=`, `<`, `<=`, `==`, `is`, etc.)
+#   * You may use iterators. (`while`, `for`, `break`, `continue`)
+#   * You may NOT store any variables. (`=`)
+#   * You may NOT access any instance variables directly. (`self._anything`)
+#   * You may NOT use any Python libraries or class methods. (`sorted()`, etc.)
+#   * You may define robot helper methods, as long as they follow all the rules.
