@@ -92,57 +92,23 @@ class SortingRobot:
         """
         return self._light == "ON"
 
-    def right(self):
-       # if self.can_move_right() == True:
-        self.move_right()
-        if self.compare_item() == -1:
-            self.swap_item()
-            return True
-
-        else:
-            return False
-    
-    def left(self):
-        # while self.can_move_left() == True:
-        self.move_left()
-        if self.compare_item() == -1:
-            self.swap_item()
-            return True
-
-        else:
-            return False
     def sort(self):
         """
         Sort the robot's list.
         """
-        # First, I need to make self._item not be None
-        # So the robot can compare and move over to a not none
-        # self.swap_item()
-        # self.move_right()
-        
-        # I can't figure out how to do this without a for loop
-        # And I can't use a for loop without using len(self._list)
-        # So I fail.
-        # while self.right() == True: 
-        #     self.right()
-
-        # while self.left() == True:
-        #     self.left()
-        arr = self._list
-    ## start looping at the second element
-        for idx in range(1, len(arr)):
+        ## start looping at the second element
+        for idx in range(1, len(self._list)):
             ## pick up the current element and hold it
-            current_element = arr[idx]
+            current_element = self._list[idx]
             current_idx = idx
-    ## while current element is less than its left sibling,
-            while current_idx > 0 and current_element < arr[current_idx -1]:
+        ## while current element is less than its left sibling,
+            while current_idx > 0 and current_element < self._list[current_idx -1]:
             #  copy left sibling to the right
-                arr[current_idx] = arr[current_idx -1]
-    ## decrement index
+                self._list[current_idx] = self._list[current_idx -1]
+        ## decrement index
                 current_idx -= 1
-    ## finally, put our current element down
-            arr[current_idx] = current_element
-
+        ## finally, put our current element down
+            self._list[current_idx] = current_element
 
 if __name__ == "__main__":
     # Test our your implementation from the command line
