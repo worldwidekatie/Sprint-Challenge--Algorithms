@@ -51,11 +51,11 @@ c)  def bunnyEars(bunnies):
 
       return 2 + bunnyEars(bunnies-1)
 ```
-c) O(1)
-    This is constant because it only runs once.
+c) O(n)
+    This is linear because it runs once per n due to the recursion.
     Either bunnies is zero and it returns zero,
     or it only caluclates 2+bunnyEars(bunnies-1)
-    one time and returns it.
+    once for each instance of n and returns it.
 
 ## Exercise II
 
